@@ -15,12 +15,10 @@ public class EmployeeSalaryService {
     }
     public Employee editSalary(Long id, double newSalary) {
         Optional<Employee> optionalEmployee = employeeRepository.findById(id);
-        if (optionalEmployee.isPresent()) {
-            Employee employee = optionalEmployee.get();
-            employee.setSalary(newSalary);
-            return employeeRepository.save(employee);
-        } else {
-            return null;
-        }
+        Employee employee = optionalEmployee.get();
+        employee.setId(id);
+        employee.setSalary(newSalary);
+        return employeeRepository.save(employee);
+
     }
 }

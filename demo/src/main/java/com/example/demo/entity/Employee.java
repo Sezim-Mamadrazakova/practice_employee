@@ -1,15 +1,20 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Setter
 @Getter
 @Entity
 @Table(name = "employee")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,18 +26,10 @@ public class Employee {
     @Column(name = "passport_number")
     private String pasportNumber;
     @Column(name = "passport_date")
-    private String pasportDate;
+    private LocalDate pasportDate;
     @Column(name = "salary")
     private double salary;
 
-    public Employee(Long id, String name, String surname, String pasportNumber, String pasportDate, double salary) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.pasportNumber = pasportNumber;
-        this.pasportDate = pasportDate;
-        this.salary = salary;
-    }
-    public Employee() {}
+
 
 }

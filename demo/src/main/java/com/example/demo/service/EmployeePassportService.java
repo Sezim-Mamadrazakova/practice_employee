@@ -4,6 +4,7 @@ import com.example.demo.entity.Employee;
 import com.example.demo.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
@@ -13,16 +14,14 @@ public class EmployeePassportService {
     public EmployeePassportService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }
-    public Employee editPassportData(Long id, String passportNumber, String passportDate){
+    public Employee editPassportData(Long id, String passportNumber, LocalDate passportDate){
         Optional<Employee> optionalEmployee = employeeRepository.findById(id);
-        if (optionalEmployee.isPresent()) {
-            Employee employee = optionalEmployee.get();
-            employee.setPasportNumber(passportNumber);
-            employee.setPasportDate(passportDate);
-            return employeeRepository.save(employee);
-        }
-        else {
-            return null;
-        }
+        Employee employee = optionalEmployee.get();
+        employee.setId(id);
+        employee.setPasportNumber(passportNumber);
+        employee.setPasportDate(passportDate);
+        return employeeRepository.save(employee);
+
+
     }
 }

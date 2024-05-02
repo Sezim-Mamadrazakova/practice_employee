@@ -41,12 +41,13 @@ public class EmployeeController {
     }
     @PutMapping("/{id}/salary")
     public ResponseEntity<Employee> editSalary(@PathVariable Long id, @RequestParam double newSalary) {
-        return ResponseEntity.ok(employeeSalaryService.editSalary(id, newSalary));
+        employeeSalaryService.editSalary(id, newSalary);
+        return ResponseEntity.status(HttpStatus.OK).build();
 
     }
     @PutMapping("/{id}/passport")
     public ResponseEntity<Employee> editPassportData(@PathVariable Long id, @RequestParam String passportNumber, @RequestParam LocalDate passportDate) {
-        return ResponseEntity.ok(employeePassportService.editPassportData(id, passportNumber, passportDate));
-
+        employeePassportService.editPassportData(id, passportNumber, passportDate);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

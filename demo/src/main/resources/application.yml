@@ -2,7 +2,6 @@
 server:
   port: 8080
 
-
 spring:
   application:
     name: practice_employee
@@ -11,3 +10,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/employee
     username: postgres
     password: 12345678
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
